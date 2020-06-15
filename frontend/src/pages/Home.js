@@ -18,7 +18,7 @@ class Home extends Component {
         this.state = {
             users: [],
             tasks: [],
-            currentUser: { id: null, name: '', username: '' },
+            currentUser: { id: null, name: ''},
             editing: false
         }
     }
@@ -28,7 +28,7 @@ class Home extends Component {
     }
 
     refreshUserTable() {
-            this.usersData = api.get('api')
+            this.usersData = api.get('users')
             .then(response => {
                 let data = response.data;
 
@@ -56,7 +56,7 @@ class Home extends Component {
 
     addUser = user => {
 
-        api.post('api', qs.stringify(user))
+        api.post('users', user)
             .then(res => {
                 this.refreshUserTable();
             });
@@ -64,7 +64,7 @@ class Home extends Component {
 
     deleteUser = id => {
 
-        api.delete(`api/${id}`)
+        api.delete(`users/${id}`)
             .then(res => {
                 this.refreshUserTable();
             });
@@ -72,14 +72,14 @@ class Home extends Component {
 
     updateUser = (id, user) => {
         
-        api.put(`api/${id}`, qs.stringify(user))
+        api.put(`users`, user)
             .then(res => {
 
                 this.refreshUserTable();
             });
         
         this.setState({ 
-            currentUser: { id: null, name: '', username: '' }
+            currentUser: { id: null, name: ''}
         });
 
         this.setEditing(false);
@@ -87,8 +87,8 @@ class Home extends Component {
 
     editRow = user => {
 
-        this.setState({ 
-            currentUser: { id: user.id, name: user.name, username: user.username }
+        this.setState({
+            currentUser: { id: user.id, name: user.name }
         });
 
         this.setEditing(true);
@@ -97,7 +97,7 @@ class Home extends Component {
     reviewUser = user => {
 
         this.setState({ 
-            currentUser: { id: user.id, name: user.name, username: user.username }
+            currentUser: { id: user.id, name: user.name }
         });
 
         this.setReviewing(true);
@@ -107,20 +107,20 @@ class Home extends Component {
         camundaApi.get(`process-instance/${task.processInstanceId}/variables`)
             .then(response => {
                 let variable = response.data;
-                api.get(`api/${variable.userId.value}`)
+                api.get(`users/${variable.userId.value}`)
                     .then(response => {
-                        let user = response.data;
+                        let user = response.data.resource;
                         if (task.name === 'Review user') {
-                            this.reviewUser(user.data);
+                            this.reviewUser(user);
                         } else {
-                            this.editRow(user.data);
+                            this.editRow(user);
                         }
                     });
             });
     };
 
     reject = userId => {
-        api.put(`api/reject/${userId}`)
+        api.put(`users/reject/${userId}`)
             .then(res => {
                 this.refreshUserTable();
         });

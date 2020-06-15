@@ -22,39 +22,6 @@ Port: http://localhost:3000
 
 <br>
 
-## backend
-
-| dependencies | links |
-| ------ | ----- |
-| cors | [link](https://github.com/expressjs/cors#readme) |
-| express | [link](https://expressjs.com/) |
-| sequelize | [link](https://sequelize.org/) |
-| sqlite3 | [link](https://github.com/mapbox/node-sqlite3) |
-
-| dev-dependencies | links |
-| ------ | ----- |
-| nodemon | [link](https://nodemon.io/) |
-| sequelize-cli | [link](https://github.com/sequelize/cli#readme) |
-
-### `npm start`
-Start api server.
-Port: http://localhost:3333
-
-<br>
-
-Database in: database/database.sqlite
-
-The database.sqlite already contains some data.
-
-### Api routes:
-
-| verb | route |
-| ------ | ------ |
-| get | /api |
-| post | /api |
-| put | /api/:id |
-| delete | /api/:id |
-
 ### Tutorial referencies:
 
 [Build a CRUD App in React with Hooks - Tania Rascia](https://www.taniarascia.com/crud-app-in-react-with-hooks/) - eng.

@@ -34,19 +34,6 @@ const ReviewUserForm = props => {
                 </div>
 
                 <div className="row">
-                    <div className="input-field col s12">
-
-                        <input 
-                            type="text" 
-                            name="username" 
-                            value={user.username}
-                            required 
-                            disabled/>
-                        <label htmlFor="username"></label>
-                    </div>
-                </div>
-                
-                <div className="row">
                     <div className="input-field col s12 m6">
 
                         <button className="waves-effect waves-light btn-small" onClick={approve}>approve</button>

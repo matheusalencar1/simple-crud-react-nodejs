@@ -14,7 +14,7 @@ const AddUserForm = props => {
     const submitForm = event => {
         event.preventDefault();
 
-        if (!user.name || !user.username) return;
+        if (!user.name) return;
 
         props.addUser(user);
         setUser(initialFormState);
@@ -38,19 +38,6 @@ const AddUserForm = props => {
                     </div>
                 </div>
 
-                <div className="row">
-                    <div className="input-field col s12">
-
-                        <input 
-                            type="text" 
-                            name="username" 
-                            value={user.username}
-                            onChange={handleInputChange} 
-                            required />
-                        <label htmlFor="username">Username</label>
-                    </div>
-                </div>
-                
                 <div className="row">
                     <div className="input-field col s12">
 

@@ -38,19 +38,6 @@ const EditUserForm = props => {
                 </div>
 
                 <div className="row">
-                    <div className="input-field col s12">
-
-                        <input 
-                            type="text" 
-                            name="username" 
-                            value={user.username}
-                            onChange={handleInputChange} 
-                            required />
-                        <label htmlFor="username"></label>
-                    </div>
-                </div>
-                
-                <div className="row">
                     <div className="input-field col s12 m6">
 
                         <button className="waves-effect waves-light btn">Update</button>
@@ -58,7 +45,7 @@ const EditUserForm = props => {
 
                     <div className="input-field col s12 m6">
 
-                        <button 
+                        <button
                             className="waves-effect waves-light btn"
                             onClick={() => props.setEditing(false)}
                             >Cancel</button>
